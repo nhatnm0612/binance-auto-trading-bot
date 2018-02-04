@@ -17,12 +17,12 @@ if __name__ == "__main__":
     
     while True:
     
-    try:
+        try:
     
-        BNBUSDT.exchange_coin2(SELLING_PRICE = 9.80)
+            BNBUSDT.exchange_coin2(SELLING_PRICE = 9.80)
     
-        BNBUSDT.exchange_coin1(BUYING_PRICE = 9.73)
+            BNBUSDT.exchange_coin1(BUYING_PRICE = 9.73)
     
-    except ValueError:
+        except ValueError:
     
-        time.sleep(5)
+            time.sleep(5)
