@@ -58,7 +58,7 @@ class Binance:
         else:
             raise IOError("There is no such asset name as \"{}\"".format(ticker))
 
-    def exchange_coin1(self, BUYING_PRICE, volumn = ALL, sleep_timer = 5, check_order_timer = 300):
+    def exchange_coin1(self, BUYING_PRICE, volumn = ALL, check_price_timer = 5, check_order_timer = 300):
         ## buying coin1 by coin2
         complete_order    = False
         coin2_have        = self.balance_check(ticker = "{}".format(self.coin2))
@@ -93,9 +93,9 @@ class Binance:
                         self.client.cancel_order(symbol = self.symbol,
                                                  orderId = "{}".format(open_order["orderId"]))
                 elif BUYING_PRICE < price_now:
-                    time.sleep(sleep_timer)
+                    time.sleep(check_price_timer)
             
-    def exchange_coin2(self, SELLING_PRICE, volumn = ALL, sleep_timer = 5, check_order_timer = 300):
+    def exchange_coin2(self, SELLING_PRICE, volumn = ALL, check_price_timer = 5, check_order_timer = 300):
         ## selling coin1 to coin2
         complete_order    = False
         coin1_have        = self.balance_check(ticker = "{}".format(self.coin1))
@@ -130,7 +130,7 @@ class Binance:
                         self.client.cancel_order(symbol = self.symbol,
                                                  orderId = "{}".format(open_order["orderId"]))
                 elif SELLING_PRICE > price_now:
-                    time.sleep(sleep_timer)
+                    time.sleep(check_price_timer)
 
     def cancel_order(self, ORDER):
         client.cancel_order(symbol = self.symbol,

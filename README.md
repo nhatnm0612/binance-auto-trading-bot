@@ -3,6 +3,6 @@ v1.0
 
 before using:
     
-    1. pip install python-binance
+pip install python-binance
     
-    2. pip install numpy
+pip install numpy
